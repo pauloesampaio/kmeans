@@ -27,8 +27,10 @@ if path != "Enter image url":
     cluster_img = create_cluster_image(kmeans, (h, w), add_legend)
     col1, col2 = st.beta_columns(2)
     col1.header("Original")
-    col1.image(resized_image, use_column_width=True)
+    # col1.subheader("")
+    col1.image(current_image, use_column_width=True)
     col2.header(f"{k} clusters reconstruction")
+    # col2.subheader("Max side: 128")
     col2.pyplot(cluster_img)
     if plot_elbow:
         elbow = get_elbow_curve(img_to_list(current_image_hsv))

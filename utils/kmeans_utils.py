@@ -53,14 +53,14 @@ def resize_image(image, dest_size=None, max_side=None):
         np.array: Array representation of the resized image
     """
     if dest_size:
-        return image.resize(dest_size, Image.NEAREST)
+        return image.resize(dest_size, Image.LANCZOS)
     elif max_side:
         scale_factor = max(image.size) / max_side
         (width, height) = (
             image.width // scale_factor,
             image.height // scale_factor,
         )
-        resized_image = image.resize((int(width), int(height)), Image.NEAREST)
+        resized_image = image.resize((int(width), int(height)), Image.LANCZOS)
         return resized_image
     else:
         return image
